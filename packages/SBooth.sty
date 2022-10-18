@@ -1,0 +1,26 @@
+\ProvidesPackage{SBooth}
+\usepackage{graphicx}
+\usepackage{framed} % For the "details" environment
+
+% horizontal line 0.75pt thick from 1in from the left margin to the right margin
+\newcommand{\optionrule}{\noindent\rule{1.0\textwidth}{0.75pt}\par}
+
+% horizontal line 0.75pt thick three quarters the text width 
+%centred between the left and right margins
+\newcommand{\cenoptionrule}{\begin{center}\noindent\rule{0.75\textwidth}{0.75pt}\par\end{center}}
+
+% horizontal line 1pt thick three quarters the text width 
+%centred between the left and right margins
+\newcommand{\woptionrule}{\begin{center}\noindent\rule{0.75\textwidth}{1pt}\par\end{center}
+}
+
+%Aside environment
+% \begin{aside}...\end{aside}
+\newenvironment{aside}{%
+  \def\FrameCommand{\hspace{2em}}
+  \MakeFramed {\advance\hsize-\width \indent\footnotesize}\bfseries}
+{\endMakeFramed}
+
+% WOW marker
+% \wow\ puts a large asterisk in the right margin next to the line it is embedded in
+\newcommand{\wow}{\marginpar{{\Huge{$*$}}}}

@@ -1,0 +1,89 @@
+\documentclass{SBBook}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{imakeidx}
+\usepackage{pdfpages}
+\usepackage[nobottomtitles]{titlesec}
+\usepackage[font=scriptsize]{caption}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{amsmath, amsthm, amssymb, amsfonts}
+\usepackage{mathtools}
+\usepackage{harvard}
+\usepackage{longtable}
+\usepackage{pgfplots}
+\usepackage{url}
+\usepackage{lscape}
+\usepackage[Conny]{fncychap}
+%Options: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, Bjornstrup
+\usepackage{minitoc}
+%\usepackage{mtcoff}
+\usepackage{./packages/SBooth}
+
+\hypersetup{
+pdftitle={Why Does Maths Have To Be So Hard? by Stephen Booth},
+pdfsubject={Why Does Maths Have To Be So Hard?},
+pdfauthor={Stephen Booth},
+pdfkeywords={Math Maths Statistics Trigonometry Calculus Differentials Integrals},
+colorlinks=true,
+linkcolor=blue
+}
+
+\titleclass{\part}{top}
+\titleformat{\part}[display]
+  {\normalfont\huge\bfseries}{\centering\partname\  \thepart}{20pt}{\Huge\centering}
+  
+\pgfplotsset{compat=1.17}
+\pgfmathdeclarefunction{gauss}{2}{%
+  \pgfmathparse{1/(#2*sqrt(2*pi))*exp(-((x-#1)^2)/(2*#2^2))}%
+}
+
+\setcounter{secnumdepth}{5}
+
+
+%\makeindex
+\makeindex[name=terms, columns=2, title= Index of Terms, options= -s terms.ist]
+\makeindex[name=people, columns=2, title = Notable People in Maths, options= -s terms.ist]
+
+\newcommand{\ii}[1]{{\it #1}}
+\newcommand{\bb}[1]{\textbf{#1}}
+\begin{document}
+\include{./chapters/titlepage}
+\maketitle
+% \doparttoc
+\dominitoc
+%\part{Fore Matters}
+\include{chapters/foreword.tex}
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+\part{Background}
+% \parttoc
+\input{chapters/Introduction.tex}
+
+\part{Numbers}
+% \parttoc
+\include{chapters/typesofnumber.tex}
+
+\include{chapters/bases.tex}
+
+\part{Algebra}
+\input{chapters/basicalgebra.tex}
+
+\part{Shapes}
+
+\input{chapters/trigonometry.tex}
+
+\part{Calculus}
+\input{chapters/calculus.tex}
+
+\part{Appendices} \label{Appendices}
+% \parttoc
+\appendix
+\input{chapters/Appendices.tex}
+\input{chapters/indexes.tex}
+\input{chapters/endmatter.tex}
+\end{document}
